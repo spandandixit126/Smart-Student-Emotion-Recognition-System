@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ADD DATA </title>
+</head>
+<body>
+    <center>
+    <table>
+    <form action="http://127.0.0.1:5000/add_data" method="POST">
+       
+            <tr>
+                <td>Department </td>
+                <td><select name="dep">
+                    <option value="Ce" selected >ce</option>
+                    <option value="IT">IT</option>
+                    
+                </select></td>
+                
+            </tr>
+            <tr>
+                <td>class  </td>
+                <td><select name="class">
+                    <option value="A" selected >A</option>
+                    <option value="B">B</option>
+                    
+                </select></td>
+                
+            </tr>
+            <tr>
+                <td>Subject   </td>
+                <td><select name="subject">
+                    <option value="AI">AI</option>
+                    <option value="DS_ml">DS_ml</option>
+                    <option value="CC" selected>CC</option>
+                    <option value="TOC">TOC</option>
+                    
+                </select></td>
+                
+            </tr>
+            <tr>
+                <td>Teacher   </td>
+                <td><select name="teacher">
+                    <option value="RDV">RDV SIR</option>
+                    <option value="HMS">HMS SIR</option>
+                    <option value="PSP" selected>PSP SIR</option>
+                    <option value="MNP">MNP SIR</option>
+                </select></td>
+                
+            </tr>
+            <tr>
+                <td>Date  </td>
+                <td><input type="date"  name="date"> </td>
+                
+            </tr>
+       
+            <tr colspan="2"> 
+                <td>  <input type="submit"></td>
+            </tr>
+
+            <tr > 
+                <td> select the video from root folder </td>
+                <td>  <input type="file" id="vid" name="vid" accept="video/*"></td>
+            </tr>
+    </form>
+</table>
+</center>
+</body>
+</html>

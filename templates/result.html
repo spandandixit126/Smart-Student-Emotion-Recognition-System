@@ -1,0 +1,135 @@
+{% extends "nav_bar.html" %}
+{% block content %}
+<head>
+    <meta charset="UTF-8" />
+    <title>Result Page</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</head>
+  <body>
+
+  <p style="margin-left: 150px">result page:
+    <br />
+    choosen file:{{vid}}
+    <br />
+    {{vid_dir}}
+    <br />
+    You may find video_frames folder in which there is a dir of your video
+    containing some images and json file...
+  </p>
+    <canvas id="lineChart" width="900" height="400"></canvas>
+    <script>
+      var ctx = document.getElementById("lineChart").getContext("2d");
+      var lineChart = new Chart(ctx, {
+          type: "line",
+          data: {
+              labels: {{labels | safe}},
+      datasets: [{label: "Happy",data: {{happy_values_line | safe}},
+      fill: true,
+              borderColor:"rgb(32,150,80)",
+          lineTension:0.5,
+      },
+      {
+          label: "Sad",
+              data:{{sad_values_line | safe}}      ,
+          fill: true,
+              borderColor:"rgb(52,50,80)",
+              lineTension:0.5,}
+      ,
+      {label: "Angry",
+              data:{{angry_values_line | safe}}
+      ,
+          fill: true,
+              borderColor:"rgb(152,50,80)",
+              lineTension:0.5,
+      }
+      ,
+      {label: "Neutral",
+              data:{{neutral_values_line | safe}}
+      ,
+          fill: true,
+              borderColor:"rgb(52,50,180)",
+              lineTension:0.5,
+      }
+      ],
+      },
+      options: {
+          responsive: false
+      }
+      ,
+      })
+      ;
+    </script>
+
+    <canvas id="radarChart" width="900" height="400"></canvas>
+    <script>
+      var ctx = document.getElementById("radarChart").getContext("2d");
+      var radarChart = new Chart(ctx, {
+              type: "radar",
+              data: {
+                  labels: ['Happy', 'Sad', 'Angry', 'Neutral'],
+                  datasets: [{
+                      label: "Happy",
+                      data: {{happy_values_radar | safe}},
+          fill:true,
+          borderColor:"rgb(32,150,80)",
+          lineTension:0.5,
+      },
+      {label: "Sad",
+              data:{{sad_values_radar | safe}}
+      ,
+          fill: true,
+              borderColor:"rgb(52,50,80)",
+              lineTension:0.5,
+      }
+      ,
+      {
+          label: "Angry",
+              data:{{angry_values_radar | safe}}
+      ,
+          fill: true,
+              borderColor:"rgb(152,50,80)",
+              lineTension:0.5,
+      }
+      ,
+      {label: "Neutral",
+              data:{{neutral_values_radar | safe}}
+      ,
+          fill: true,
+              borderColor:"rgb(52,50,180)",
+              lineTension:0.5,
+      }
+      ],
+      },
+      options: {
+          responsive: false
+      }
+      ,
+      });
+
+    </script>
+    <canvas id="doughnutChart" width="900" height="400"></canvas>
+    <script>
+      var ctx = document.getElementById("doughnutChart").getContext("2d");
+      var doughnutChart = new Chart(ctx, {
+          type:"doughnut",
+          data:{
+              labels: [ 'Happy', 'Sad', 'Angry', 'Neutral' ],
+              datasets: [{
+                          label: 'My First Dataset',
+                          data: [{{happy}},{{sad}},{{angry}},{{neutral}}],
+                          backgroundColor: [
+                            'rgb(255, 99, 132)',
+                            'rgb(54, 162, 235)',
+                            'rgb(255, 205, 86)',
+                            'rgb(54, 255, 235)'
+                          ],
+                          hoverOffset: 4
+  }]
+      },options: {
+          responsive: false
+      },
+
+      });
+    </script>
+{% endblock content %}

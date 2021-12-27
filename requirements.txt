@@ -1,0 +1,9 @@
+glob
+tensorflow==2.5.0rc0
+tensorflow.keras
+PIL
+flask
+pyrebase4
+opencv
+json
+jinja2

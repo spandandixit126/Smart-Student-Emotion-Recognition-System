@@ -1,0 +1,344 @@
+{% extends "nav_bar.html" %}
+{% block title %} Dashboard {% endblock %}
+{% block content %}
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard | SSERS </title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<p style="margin-left:150px; font-size:35;">Overview</p>
+<div class="btn-group align-top" style="margin-left:1100px; margin-top:-50px;">
+    <button class="btn btn-sm btn-outline-secondary badge"
+            type="button"><i class="fa fa-wrench"></i></button>
+    <button class="btn btn-sm btn-outline-secondary badge" type="button"
+            data-toggle="modal" data-target="#user-form-modal">Customize
+    </button>
+</div>
+<div class="modal fade" role="dialog" tabindex="-1" id="user-form-modal">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+
+             <div class="modal-header">
+                            <h2 class="modal-title">Find Data</h2>
+                            <button type="button" class="close" data-dismiss="modal" style="margin-top: -35px;">
+                                <span aria-hidden="true">CLOSE</span>
+                            </button>
+                        </div>
+<div class="modal-body" style="margin: 30px;">
+    <table style="margin:20px;">
+    <form action="http://127.0.0.1:5000/find_data" method="POST">
+            <tr>
+                <td>Department </td>
+                <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                <td><select name="dep">
+                    <option value="Ce" selected >ce</option>
+                    <option value="IT">IT</option>
+
+                </select></td>
+
+            </tr>
+            <tr>
+                <td>class  </td>
+<td></td>
+                <td><select name="class">
+                    <option value="A" selected >A</option>
+                    <option value="B">B</option>
+
+                </select></td>
+
+            </tr>
+            <tr>
+                <td>Subject   </td>
+                <td></td>
+                <td><select name="subject">
+                    <option value="AI">AI</option>
+                    <option value="DS_ml">DS_ml</option>
+                    <option value="CC" selected>CC</option>
+                    <option value="TOC">TOC</option>
+
+                </select></td>
+
+            </tr>
+            <tr>
+                <td>Teacher   </td>
+                <td></td>
+                <td><select name="teacher">
+                    <option value="RDV">RDV SIR</option>
+                    <option value="HMS">HMS SIR</option>
+                    <option value="PSP" selected>PSP SIR</option>
+                    <option value="MNP">MDT SIR</option>
+                </select></td>
+
+            </tr>
+            <tr>
+                <td>Date  </td>
+                <td></td>
+                <td><input type="date"  name="date"> </td>
+
+            </tr>
+
+            <tr colspan="2">
+                <td>  <input type="submit"></td>
+            </tr>
+    </form>
+</table>
+                    </div>
+</div>
+                </div>
+            </div>
+        {% if toggle == 0 %}
+        <p style="margin-left: 150px">Dashboard data is currently not available please process atleast one video.</p>
+
+        {% endif %}
+        {% if toggle == 1 %}
+<h4 style="margin-left:150px;">You are viewing Latest Processed Video</h4>
+<h5 style="margin-left:150px;">TO change to specific view click on customize option</h5>
+
+<div style="margin-left:150px; margin-top: 50px; width: 500px;height: 500px;">
+        <div id="leftbox" class="modal-content" style="width: 500px;height: 150px;">
+                        <div class="modal-header">
+                            <h3 class="modal-title">Dominent Emotions</h3>
+                        </div>
+                        <p style="margin:20px;">Happy</p>
+                        <div class="modal-body" style="margin-right: 50px; margin-top:-50px; margin-left: -100px;">
+                            <div class="py-1">
+                            <!--canvas and script-->
+                                <br/>
+                            <div class="progress" style="width:250px; margin-left: 120px">
+                              <div class="progress-bar bg-dark" style="color:black; width:{{happy*10}}%">happy</div>
+                            </div>
+                            </div>
+                        </div>
+</div>
+        <div id="rightbox" class="modal-content" style="margin-top: -150px; margin-left: 550px; width: 500px;height: 150px;">
+                        <div class="modal-header">
+                            <h3 class="modal-title">Dominent Emotions</h3>
+                        </div>
+                        <p style="margin:20px;">Sad</p>
+                        <div class="modal-body" style="margin-right: 50px; margin-top:-50px; margin-left: -100px;">
+                            <div class="py-1">
+                            <!--canvas and script-->
+                                <br/>
+                            <div class="progress" style="width:250px; margin-left: 120px">
+                              <div class="progress-bar bg-dark" style="color:black; width:{{sad*10}}%">sad</div>
+                            </div>
+                            </div>
+                        </div>
+</div>
+        <div id="leftbox" class="modal-content" style="margin-top:50px;width: 500px;height: 150px;">
+                        <div class="modal-header">
+                            <h3 class="modal-title">Dominent Emotions</h3>
+                        </div>
+                        <p style="margin:20px;">Angry</p>
+                        <div class="modal-body" style="margin-right: 50px; margin-top:-50px; margin-left: -100px;">
+                            <div class="py-1">
+                            <!--canvas and script-->
+                                <br/>
+                            <div class="progress" style="width:250px; margin-left: 120px">
+                              <div class="progress-bar bg-dark" style="color:black; width:{{angry*10}}%">Angry</div>
+                            </div>
+                            </div>
+                        </div>
+</div>
+        <div id="rightbox" class="modal-content" style="margin-top: -150px; margin-left: 550px; width: 500px;height: 150px;">
+                        <div class="modal-header">
+                            <h3 class="modal-title">Dominent Emotions</h3>
+                        </div>
+                        <p style="margin:20px;">Neutral</p>
+                        <div class="modal-body" style="margin-right: 50px; margin-top:-50px; margin-left: -100px;">
+                            <div class="py-1">
+                            <!--canvas and script-->
+                                <br/>
+                            <div class="progress" style="width:250px; margin-left: 120px">
+                              <div class="progress-bar bg-dark" style="color:black; width:{{neutral*10}}%">Neutral</div>
+                            </div>
+                            </div>
+                        </div>
+        </div>
+</div>
+        <div class="modal-content" style="margin-left:150px; margin-top:-100px; width: 1050px;height: 550px;">
+                        <div class="modal-header">
+                            <h3 class="modal-title">Statistics</h3>
+                        </div>
+                        <p style="margin:20px;">Line Chart</p>
+                        <div class="modal-body" style="margin-right: 50px; margin-top:-50px; margin-left: -100px;">
+                            <div class="py-1">
+                            <!--canvas and script-->
+                                <canvas id="lineChart" width="900" height="400"></canvas>
+                                <script>
+                                    var ctx = document.getElementById("lineChart").getContext("2d");
+                                    var lineChart = new Chart(ctx, {
+                                        type: "line",
+                                        data: {
+                                            labels: {{labels | safe}},
+                                    datasets: [{label: "Happy",data: {{happy_values_line | safe}},
+                                    fill: true,
+                                        borderColor:"rgb(32,150,80)",
+                                        lineTension:0.5,
+                                    },
+                                    {
+                                        label: "Sad",
+                                            data:{{sad_values_line | safe}}      ,
+                                        fill: true,
+                                            borderColor:"rgb(52,50,80)",
+                                        lineTension:0.5,}
+                                    ,
+                                    {label: "Angry",
+                                        data:{{angry_values_line | safe}}
+                                    ,
+                                        fill: true,
+                                            borderColor:"rgb(152,50,80)",
+                                        lineTension:0.5,
+                                    }
+                                    ,
+                                    {label: "Neutral",
+                                        data:{{neutral_values_line | safe}}
+                                    ,
+                                        fill: true,
+                                            borderColor:"rgb(52,50,180)",
+                                        lineTension:0.5,
+                                    }
+                                    ],
+                                    },
+                                    options: {
+                                        responsive: true
+                                    }
+                                    ,
+                                    })
+                                    ;
+                                </script>
+                            </div>
+                        </div>
+</div>
+        <div class="modal-content" style="margin-left:150px; margin-top:50px; width: 1050px;height: 550px;">
+                        <div class="modal-header">
+                            <h3 class="modal-title">Statistics</h3>
+                        </div>
+                        <p style="margin:20px;">Radar Chart</p>
+                        <div class="modal-body" style="margin-right: 50px; margin-top:-50px; margin-left: -100px;">
+                            <div class="py-1">
+                            <!--canvas and script-->
+            <canvas id="radarChart" width="900" height="400"></canvas>
+            <script>
+              var ctx = document.getElementById("radarChart").getContext("2d");
+              var radarChart = new Chart(ctx, {
+                      type: "radar",
+                      data: {
+                          labels: ['Happy', 'Sad', 'Angry', 'Neutral'],
+                          datasets: [{
+                              label: "Happy",
+                              data: {{happy_values_radar | safe}},
+                  fill:true,
+                  borderColor:"rgb(32,150,80)",
+                  lineTension:0.5,
+              },
+              {label: "Sad",
+                      data:{{sad_values_radar | safe}}
+              ,
+                  fill: true,
+                      borderColor:"rgb(52,50,80)",
+                      lineTension:0.5,
+              }
+              ,
+              {
+                  label: "Angry",
+                      data:{{angry_values_radar | safe}}
+              ,
+                  fill: true,
+                      borderColor:"rgb(152,50,80)",
+                      lineTension:0.5,
+              }
+              ,
+              {label: "Neutral",
+                      data:{{neutral_values_radar | safe}}
+              ,
+                  fill: true,
+                      borderColor:"rgb(52,50,180)",
+                      lineTension:0.5,
+              }
+              ],
+              },
+              options: {
+                  responsive: false
+              }
+              ,
+              });
+
+            </script>
+
+                            </div>
+                        </div>
+</div>
+<div style="margin-left:150px; margin-top: 50px; width: 500px;height: 500px;">
+        <div id="leftbox" class="modal-content" style=" width: 500px;height: 500px;">
+                        <div class="modal-header">
+                            <h3 class="modal-title">Statistics</h3>
+                        </div>
+                        <p style="margin:20px;">Doughnut Chart</p>
+                        <div class="modal-body" style="margin-right: 50px; margin-top:-100px; margin-left: -350px;">
+                            <div class="py-1">
+                            <!--canvas and script-->
+            <canvas id="doughnutChart" width="900" height="400"></canvas>
+            <script>
+              var ctx = document.getElementById("doughnutChart").getContext("2d");
+              var doughnutChart = new Chart(ctx, {
+                  type:"doughnut",
+                  data:{
+                      labels: [ 'Happy', 'Sad', 'Angry', 'Neutral' ],
+                      datasets: [{
+                                  label: 'My First Dataset',
+                                  data: [{{happy}},{{sad}},{{angry}},{{neutral}}],
+                                  backgroundColor: [
+                                    'rgb(255, 99, 132)',
+                                    'rgb(54, 162, 235)',
+                                    'rgb(255, 205, 86)',
+                                    'rgb(54, 255, 235)'
+                                  ],
+                                  hoverOffset: 4
+          }]
+              },options: {
+                  responsive: false
+              },
+
+              });
+            </script>
+
+                            </div>
+                        </div>
+</div>
+<div id="rightbox" class="modal-content" style="margin-top: -500px; margin-left: 550px; width: 500px;height: 500px;">
+                        <div class="modal-header">
+                            <h3 class="modal-title">Timeline</h3>
+                        </div>
+                        <p style="margin:20px;">Timeline is currently not available!</p>
+                        <br/>
+                        <p style="margin: 20px;">When available it will be displayed here.</p>
+
+                        <div class="modal-body" style="margin-right: 50px; margin-top:-100px; margin-left: -350px;">
+                            <div class="py-1">
+                            <!--canvas and script-->
+                            </div>
+                        </div>
+</div>
+</div>
+ <style>
+            #leftbox {
+                float:left;
+                width:50%;
+            }
+            #rightbox{
+                float:left;
+                width:50%;
+            }
+            </style>
+
+{% endif %}
+
+</body>
+</html>
+{% endblock content %}

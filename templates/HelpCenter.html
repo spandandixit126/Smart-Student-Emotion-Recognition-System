@@ -1,0 +1,42 @@
+{% extends "nav_bar.html" %}
+{% block title %} Help Center {% endblock %}
+{% block content %}
+<p style="margin-left:150px; font-size:35;">Help Center</p>
+    <div class="modal-content" style="width:1000px; height:550px; margin-left: 150px; margin-top: 50px; margin-bottom: 50px;">
+        <div class="modal-header">
+            <h2 class="modal-title">Chat Room - Coming Soon!</h2>
+        </div>
+        <div class="modal-body" style="margin: 20px;">
+            <p style="margin-left: 20px; margin-top: -10px;">You might like new features that are coming soon!</p>
+            <img src="/static/ChatRoom.png" style="margin-left: -20px;width:900px; height:400px;"
+                 alt="this website is under construction"/>
+        </div>
+    </div>
+    <div class="modal-content" style="width:1000px; height:550px; margin-left: 150px; margin-bottom: 50px;">
+        <div class="modal-header">
+            <h2 class="modal-title">Enhanced Faculty View - Coming Soon!</h2>
+        </div>
+        <div class="modal-body" style="margin: 20px;">
+            <p style="margin-left: 20px; margin-top: -10px;">You might like new features that are coming soon!</p>
+            <img src="/static/Faculties.png" style="margin-left: -20px;" width="900" height="400"
+                 alt="this website is under construction"/>
+        </div>
+    </div>
+    <div><center>Keep Visiting! New Features are coming soon!<br/>checkout! official documentation</center></div>
+<div class="modal-content" style="width:1000px; height:1100px; margin-left: 150px; margin-top: 50px;">
+    <div class="modal-header">
+        <h2 class="modal-title">Official Documentation</h2>
+    </div>
+    <div class="modal-body" style="margin-left: 30px;">
+         Here you can find all the updates regarding new features that is added recently.
+            <br/>
+            Check out documentation for more details of this project.
+            <object data="{{static_file}}" type="pdf" width="100px" height="100px">
+                <p>if file is not loaded than you can download official documentation from here - > <a
+                        href="/static/SSERS_DOCX.pdf">to the PDF!</a></p>
+            </object>
+<iframe src="https://drive.google.com/file/d/1FUWPwWmuI90Z6I5wWDDOYQBvv8nfmJEp/preview" width="900" height="900"></iframe>
+    </div>
+</div>
+
+    {% endblock content %}

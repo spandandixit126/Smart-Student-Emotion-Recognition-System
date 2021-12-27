@@ -1,0 +1,110 @@
+{% extends "nav_bar.html" %}
+{% block title %} Find Result Page {% endblock %}
+{% block content %}
+ <head>
+    <meta charset="UTF-8" />
+    <title>Result Page</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </head>
+  <body>
+   <div class="modal-content" style="margin-left:150px; margin-top:50px; width: 1050px;height: 500px;">
+                <div class="modal-header">
+                    <h3 class="modal-title">Sentiments</h3>
+                </div>
+                <h4 style="margin-left: 20px;">list of sentiments_key &nbsp;&nbsp;&nbsp;: [Happy, Sad, Angry, Neutral]
+              <br/>
+              list of sentiments_value : {{vir}}</h4>
+                 <div class="modal-body" style="margin-right: 50px; margin-top:-50px; margin-left: -100px;">
+                    <div class="py-1">
+                    <!--canvas and script-->
+
+    <canvas id="lineChart" width="900" height="300"></canvas>
+    <script>
+      var ctx = document.getElementById("lineChart").getContext("2d");
+      var lineChart = new Chart(ctx, {
+          type:"line",
+          data:{
+              labels: ['Happy',"Sad","Angry","Neutral"],
+              datasets: [{
+                          label: "Sentiments",
+                          data:{{vir}},
+                          fill: true,
+                          borderColor: "rgb(0,0,155)",
+                          lineTension:0.5,
+      }
+      ],
+      },
+      options: {
+          responsive: false
+      },
+      });
+    </script>
+                            </div>
+                        </div>
+</div>
+<!--    <canvas id="radarChart" width="900" height="400"></canvas>-->
+<!--    <script>-->
+<!--      var ctx = document.getElementById("radarChart").getContext("2d");-->
+<!--      var radarChart = new Chart(ctx, {-->
+<!--          type:"radar",-->
+<!--          data:{-->
+<!--              labels: [ 'Happy', 'Sad', 'Angry', 'Neutral' ],-->
+<!--              datasets: [{-->
+<!--                          label: "Happy",-->
+<!--                          data: {{ happy_values_radar | safe }},-->
+<!--                          fill: true,-->
+<!--                          borderColor: "rgb(32,150,80)",-->
+<!--                          lineTension:0.5,-->
+<!--      },{-->
+<!--                          label: "Sad",-->
+<!--                          data: {{ sad_values_radar | safe }},-->
+<!--                          fill: true,-->
+<!--                          borderColor: "rgb(52,50,80)",-->
+<!--                          lineTension:0.5,-->
+<!--      },{-->
+<!--                          label: "Angry",-->
+<!--                          data: {{ angry_values_radar | safe }},-->
+<!--                          fill: true,-->
+<!--                          borderColor: "rgb(152,50,80)",-->
+<!--                          lineTension:0.5,-->
+<!--      },{-->
+<!--                          label: "Neutral",-->
+<!--                          data: {{ neutral_values_radar | safe }},-->
+<!--                          fill: true,-->
+<!--                          borderColor: "rgb(52,50,180)",-->
+<!--                          lineTension:0.5,-->
+<!--      }-->
+<!--      ],-->
+<!--      },-->
+<!--      options: {-->
+<!--          responsive: false-->
+<!--      },-->
+<!--      });-->
+<!--    </script>-->
+
+<!--    <canvas id="doughnutChart" width="900" height="400"></canvas>-->
+<!--    <script>-->
+<!--      var ctx = document.getElementById("doughnutChart").getContext("2d");-->
+<!--      var doughnutChart = new Chart(ctx, {-->
+<!--          type:"doughnut",-->
+<!--          data:{-->
+<!--              labels: [ 'Happy', 'Sad', 'Angry', 'Neutral' ],-->
+<!--              datasets: [{-->
+<!--                          label: 'My First Dataset',-->
+<!--                          data: [{{happy}},{{sad}},{{angry}},{{neutral}}],-->
+<!--                          backgroundColor: [-->
+<!--                            'rgb(255, 99, 132)',-->
+<!--                            'rgb(54, 162, 235)',-->
+<!--                            'rgb(255, 205, 86)',-->
+<!--                            'rgb(54, 255, 235)'-->
+<!--                          ],-->
+<!--                          hoverOffset: 4-->
+<!--  }]-->
+<!--      },options: {-->
+<!--          responsive: false-->
+<!--      },-->
+<!--      -->
+<!--      });-->
+<!--    </script>-->
+  </body>
+{% endblock content %}

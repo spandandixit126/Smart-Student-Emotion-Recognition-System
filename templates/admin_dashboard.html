@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Welcome</title>
+	<link rel="stylesheet" type="text/css" href="{{url_for('static', filename = 'welcome.css')}}">
+ 	<link rel="stylesheet" type="text/css" href="../static/welcome.css">
+</head>
+<body>
+<div class="main">
+	<h1>Hi, Admin</h1><hr style="width: 30%">
+	<h3>Click Here to go where you left off!</h3>
+    <form method="POST" action="{{url_for('main')}}">
+    <button>Click Here!</button>
+    </form>
+</div>
+</body>
+</html>
