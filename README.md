@@ -29,12 +29,6 @@ to exit from virtual environment
 ====================================
 deactivate
 
-admin username and password
-====================================
-username:- jadejavirpal1111@gmail.com
-
-Password:- Virpal@4747
-
 other user username and password
 ====================================
 you can create by signup but currently only admin user is working.
