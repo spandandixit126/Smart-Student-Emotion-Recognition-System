@@ -84,7 +84,6 @@ images
 ![image](https://user-images.githubusercontent.com/56479962/147464582-14316703-a96b-4725-b0a6-3878dd55d13b.png)
 ![image](https://user-images.githubusercontent.com/56479962/147464999-65d213e7-a205-4aba-8a66-5c8b345d70fa.png)
 ![image](https://user-images.githubusercontent.com/56479962/147465012-6d51366e-6b4c-44c0-a6ae-d32e36cf338e.png)
-admin
 ![image](https://user-images.githubusercontent.com/56479962/147465023-5e4dee76-02bd-4624-9589-cd3768b73db6.png)
 ![image](https://user-images.githubusercontent.com/56479962/147465036-1c6f4ebc-7644-4a27-99e7-8216583f8cc9.png)
 ![image](https://user-images.githubusercontent.com/56479962/147465121-16ce09b0-865b-4d1f-9d58-7963ec3a1bcb.png)
